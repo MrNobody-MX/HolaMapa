@@ -43,11 +43,16 @@
 	  }
 	});
 	// Cargar el archivo GeoJSON (debe estar en la misma carpeta o cambiar la ruta)
-  fetch('alcaldias.geojson')
-    .then(response => response.json())
-    .then(data => {
-      alcaldiasLayer.addData(data);
-  });
+        fetch('alcaldias.geojson')
+          .then(response => response.json())
+          .then(data => {
+            alcaldiasLayer.addData(data);
+        });
+	// Agregar control de capas para encender/apagar
+	var overlayMaps = {
+	  "Alcaldias CDMX" : alcaldiasLayer
+	};
+	L.control.layers(null, overlayMaps).addTo(map);
 		    	    	    	      	    
 				
 </script>
